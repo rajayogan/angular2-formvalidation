@@ -1,0 +1,36 @@
+<form [ngFormModel]="form">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Signup Form
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="control-label" for="username">Username</label>
+                        <input class="form-control" type="text" id="username" ngControl="username" #username="ngForm">
+                    </div>
+                    <div *ngIf="username.touched && username.errors">
+
+                        <div *ngIf="username.errors.underscorenotfound && !username.errors.required" class="alert alert-danger">
+                            <strong>Username should have an underscore</strong>
+                        </div>
+
+                        <div *ngIf="username.errors.required" class="alert alert-danger">
+                            <strong>Username is required</strong>
+                        </div>
+                        <div *ngIf="username.errors.usernotunique && !username.errors.required" class="alert alert-danger">
+                            <strong>Username is already present</strong>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Password</label>
+                        <input class="form-control" type="password" id="password" ngControl="password" #password="ngForm">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
